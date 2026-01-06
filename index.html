@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>這門課，不炒幣：手把手操作，看懂加密貨幣的商業應用</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+/* 1. 全局設定 - 企業藝術風格 (Corporate Memphis) */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* 柔和的單色調背景，帶有細微的暖意 */
+  background-color: #f8fafc; 
+  /* 抽象背景：細虛線網格 */
+  background-image: 
+    linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr;
+  margin: 0;
+  min-height: 100vh;
+  padding: 40px 0;
+  place-items: center;
+  font-family: 'Inter', 'Noto Sans TC', sans-serif;
+}
+
+/* 2. 投影片卡片容器 */
+.slide-container {
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 24px;
+  /* 柔和且深邃的陰影，模擬層次感 */
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.02),
+    0 20px 40px -4px rgba(71, 85, 105, 0.08); 
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 80px;
+  position: relative;
+  width: 1280px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* 裝飾：幾何圖形與抽象數據流 (使用偽元素) */
+.slide-container::before,
+.slide-container::after {
+  content: '';
+  position: absolute;
+  /* 改為方塊風格，帶一點點圓角 */
+  border-radius: 8px; 
+  z-index: 0;
+}
+
+/* 預設裝飾：右下角大方塊 (區塊鏈概念) */
+.slide-container::before {
+  bottom: -60px;
+  right: -60px;
+  width: 320px;
+  height: 320px;
+  /* 改為線性漸層方塊 */
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(168, 85, 247, 0.05) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  /* 旋轉角度，增加動態感 */
+  transform: rotate(-15deg);
+}
+
+/* 預設裝飾：左上角點陣方塊 */
+.slide-container::after {
+  top: 40px;
+  left: 40px;
+  width: 120px;
+  height: 120px;
+  /* 點陣圖案 */
+  background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+  background-size: 15px 15px;
+  opacity: 0.6;
+}
+
+.slide-container > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 3. 排版與字體 - 專業且易讀 */
+h1, h2, h3 {
+  color: #1e293b; /* Dark Slate */
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: #0f172a;
+}
+
+/* 標題中的強調色：亮色點綴 (Indigo & Coral) */
+h1 span {
+  color: #6366f1; /* Indigo */
+  display: block;
+  font-size: 0.75em;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.slide-title {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  padding-left: 24px;
+}
+
+/* 標題裝飾線：改為圓潤的色塊 */
+.slide-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
+  border-radius: 4px;
+}
+
+h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #334155;
+}
+
+p, li, td {
+  color: #475569; /* Slate 600 */
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  margin-bottom: 16px;
+  padding-left: 32px;
+  position: relative;
+}
+
+/* 列表符號：改為小方塊 */
+li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 10px;
+  height: 10px;
+  background-color: #f43f5e; /* Rose 亮色點綴 */
+  border-radius: 2px; /* 微微圓角的方塊 */
+}
+
+.subtitle {
+  font-size: 24px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* 4. 佈局系統 */
+
+/* 標題頁佈局 */
+.title-layout {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* 雙欄佈局 */
+.content-area {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* 圖片容器：不規則幾何遮罩風格 */
+.image-wrapper {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 20px 20px 0px rgba(226, 232, 240, 1); /* 硬陰影風格 */
+  border: 4px solid #fff;
+  height: 400px;
+  position: relative;
+  background-color: #e2e8f0;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* 卡片式內容 (Tile) */
+.tiled-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+  gap: 32px;
+  width: 100%;
+}
+
+.tile {
+  background-color: #f8fafc;
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+/* 卡片懸停效果 */
+.tile:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+  background-color: #fff;
+  border-color: #6366f1;
+}
+
+.tile .icon {
+  font-size: 32px;
+  color: #6366f1;
+  background-color: #e0e7ff;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px; /* icon 背景改為方塊 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+/* 全版圖片出血佈局 (Bleed) */
+.slide-container.bleed-layout {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.bleed-content {
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bleed-image {
+  height: 720px; /* 強制高度 */
+  position: relative;
+  width: 100%;
+}
+
+.bleed-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 在圖片上疊加抽象圖形 */
+.bleed-image::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(244,63,94,0.1));
+  mix-blend-mode: overlay;
+}
+
+/* 表格樣式 */
+.table-layout table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.table-layout th {
+  background-color: #f1f5f9;
+  color: #64748b;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 20px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.table-layout td {
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.table-layout tr:last-child td {
+  border-bottom: none;
+}
+
+.table-layout td:first-child {
+  font-weight: 700;
+  color: #0f172a;
+  background-color: #fafafa;
+}
+
+/* 時間軸樣式 */
+.timeline-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  position: relative;
+}
+
+/* 虛線連接 */
+.timeline-layout::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  right: 50px;
+  height: 2px;
+  background-image: linear-gradient(90deg, #cbd5e1 50%, transparent 50%);
+  background-size: 20px 1px;
+  z-index: 0;
+}
+
+.timeline-item {
+  width: 23%;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-dot {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  border: 3px solid #6366f1;
+  border-radius: 12px; /* 節點改為方塊 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #6366f1;
+  margin: 0 auto 24px;
+  box-shadow: 0 0 0 8px #eef2ff;
+  transform: rotate(45deg); /* 菱形效果 */
+}
+.timeline-dot span {
+    transform: rotate(-45deg); /* 文字轉正 */
+}
+
+.timeline-card {
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.timeline-card h3 {
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.timeline-card p {
+  font-size: 16px;
+  color: #64748b;
+}
+
+/* 特色數字區塊 */
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.highlight-box {
+  padding: 40px 20px;
+  background: radial-gradient(circle at top right, #f8fafc, #fff);
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+}
+
+.highlight-number {
+  font-size: 80px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #6366f1, #f43f5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  margin-bottom: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* 引用頁面 */
+.quote-slide {
+  background-color: #1e293b !important; /* 特殊深色背景 */
+  color: white;
+}
+.quote-slide h2, .quote-slide p, .quote-slide .quote-text {
+    color: #f8fafc;
+}
+.quote-slide::before {
+    opacity: 0.1;
+    border-radius: 12px;
+}
+
+.quote-text {
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 900px;
+  position: relative;
+}
+
+.quote-text::before {
+  content: '\201C';
+  font-family: serif;
+  font-size: 120px;
+  color: #6366f1;
+  position: absolute;
+  top: -80px;
+  left: -60px;
+  opacity: 0.5;
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide-container" id="slide1">
+    <div style="position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; background: #e0e7ff; border-radius: 20px; opacity: 0.5; transform: rotate(15deg);"></div>
+    <div style="position: absolute; bottom: 80px; left: -40px; width: 150px; height: 150px; background: #fce7f3; border-radius: 12px; opacity: 0.6; transform: rotate(-10deg);"></div>
+    
+    <div class="title-layout">
+        <h1>這門課，不炒幣<br><span>手把手操作，看懂商業應用</span></h1>
+        <p class="subtitle">專為企業、組織與追求長期判斷力的你所設計<br>告別投機思維，掌握 Web3 工具本質</p>
+        
+        <div style="margin-top: 40px; display: flex; gap: 20px;">
+            <div style="padding: 10px 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-calendar-days" style="color: #6366f1;"></i> 2026/03/06 實體課程
+            </div>
+            <div style="padding: 10px 20px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-user-tie" style="color: #f43f5e;"></i> 區塊勢作者許明恩
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2: Problem (從問題出發) -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">為什麼大家都說它有用，你卻無感？</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <p style="font-size: 22px; margin-bottom: 30px; color: #334155; font-weight: 500;">
+                    市場充滿雜訊，導致了「認知斷層」：
+                </p>
+                <ul>
+                    <li><strong>充滿投機雜訊：</strong> 90% 的資訊都在談價格漲跌，而非價值。</li>
+                    <li><strong>缺乏商業邏輯：</strong> 知道「有這個技術」，卻不知道「怎麼用在工作上」。</li>
+                    <li><strong>實作門檻過高：</strong> 想嘗試卻怕被駭客攻擊、怕轉錯帳。</li>
+                    <li><strong>企業導入困難：</strong> 老闆想做 Web3，但團隊沒人懂風險與邊界。</li>
+                </ul>
+                <div style="margin-top:30px; padding: 20px; background: #fee2e2; border-radius: 12px; border-left: 6px solid #ef4444;">
+                    <p style="font-size: 18px; margin: 0; color: #991b1b;">
+                        <strong>結果：</strong> 錯過用它提升生產力的機會。
+                    </p>
+                </div>
+            </div>
+            <div class="image-wrapper" style="border-radius: 20px; box-shadow: 20px 20px 0 #f1f5f9;">
+                <!-- 示意圖：困惑的商業人士 -->
+                <img src="https://images.unsplash.com/photo-1521791136064-7985c2d171de?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Confused business context">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3: Solution (提供解方) -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">這堂課的解方：回到原點</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>視為科技工具</h3>
+                <p>忘掉幣價。我們將區塊鏈還原為一種「高效傳輸價值」的網路技術，如同當年的 Email。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>去偽存真</h3>
+                <p>不神話技術。誠實剖析它的優點、缺點，以及哪些場景「不適合」使用區塊鏈。</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>建立商業判斷</h3>
+                <p>透過實作建立手感，讓你未來面對行銷案、支付串接時，能做出正確決策。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Lecturer (介紹講師) -->
+<div class="slide-container bleed-layout" id="slide4">
+    <div class="bleed-content">
+        <div style="margin-bottom: 20px; display:inline-block; padding: 6px 12px; background:#e0e7ff; color:#4338ca; border-radius:6px; font-weight:700; font-size: 14px;">YOUR INSTRUCTOR</div>
+        <h2 class="slide-title" style="margin-bottom: 20px;">講師｜區塊勢 許明恩</h2>
+        <p class="subtitle" style="margin-bottom: 40px;">擅長把複雜技術轉成「人話」的翻譯官</p>
+        
+        <div style="display: grid; gap: 20px;">
+            <div style="display: flex; gap: 15px;">
+                <i class="fa-solid fa-pen-nib" style="color: #6366f1; font-size: 24px; margin-top: 4px;"></i>
+                <div>
+                    <h3 style="margin-bottom: 4px; font-size: 20px;">全職寫作 7 年</h3>
+                    <p style="font-size: 18px;">創辦訂閱制媒體《區塊勢》，累積數千篇深度分析。</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <i class="fa-solid fa-microphone-lines" style="color: #6366f1; font-size: 24px; margin-top: 4px;"></i>
+                <div>
+                    <h3 style="margin-bottom: 4px; font-size: 20px;">觀點影響力</h3>
+                    <p style="font-size: 18px;">Podcast 累積千萬下載，長期受邀至企業與政府內訓。</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <i class="fa-solid fa-building" style="color: #6366f1; font-size: 24px; margin-top: 4px;"></i>
+                <div>
+                    <h3 style="margin-bottom: 4px; font-size: 20px;">產業實務</h3>
+                    <p style="font-size: 18px;">現任台灣大哥大子公司董事，不僅懂寫，更懂做。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修正：加入 style 讓圖片垂直置中，並設定背景色與左側一致 -->
+    <div class="bleed-image" style="display: flex; align-items: center; justify-content: center; background-color: #f8fafc;">
+        <!-- 修正：限制圖片寬度為 75%，高度自動，加入圓角與陰影，使其看起來像張精緻的照片卡 -->
+        <img src="https://img.notionusercontent.com/s3/prod-files-secure%2Ffc18184c-c231-4285-af3c-a417cb63bf56%2F5a4e5664-6607-4864-8377-ae0944d75725%2FFacebook_Image.jpeg/size/w=2000?exp=1767797648&sig=C7WZx5VMuLI3akt_8NUWhxucHL59FSipOQzbR1Uil2U&id=1e422223-9073-801c-94c9-c1cdefc9b038&table=block&userId=5e3f6fb2-a319-42e8-8cf5-66cc2a824d42" 
+             alt="許明恩" 
+             style="width: 75%; height: auto; max-height: 600px; object-fit: contain; border-radius: 24px; box-shadow: 20px 20px 0 #e2e8f0; border: 4px solid #fff;">
+    </div>
+</div>
+
+<!-- Slide 5: Methodology - Step 1 (循序漸進 - 觀念) -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">第一步：建立核心觀念</h2>
+    <div class="content-area">
+        <div class="tiled-content" style="grid-template-columns: 1fr 1fr;">
+            <div class="tile" style="align-items: center; text-align: center;">
+                <div class="icon" style="background-color: #fee2e2; color: #ef4444;"><i class="fa-solid fa-ban"></i></div>
+                <h3>這裡不教</h3>
+                <p>我們不看 K 線圖，不教你開交易所帳戶炒幣，不推薦任何「百倍幣」。</p>
+            </div>
+            <div class="tile" style="align-items: center; text-align: center;">
+                <div class="icon" style="background-color: #d1fae5; color: #059669;"><i class="fa-regular fa-circle-check"></i></div>
+                <h3>課程著重</h3>
+                <p>理解去中心化的「信任機制」，以及如何利用它來降低商業運作的成本。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 6: Methodology - Step 2 (循序漸進 - 實作) -->
+<div class="slide-container bleed-layout" id="slide6">
+    <div class="bleed-image">
+        <img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hands on blockchain">
+    </div>
+    <!-- 修正：將 padding 從預設的 80px 調整為 60px，並縮減標題下方的 margin -->
+    <div class="bleed-content" style="background-color: #f8fafc; padding: 60px;">
+        <h2 class="slide-title" style="margin-bottom: 20px;">第二步：從「看過」變「做過」</h2>
+        <p class="subtitle" style="margin-bottom: 30px;">唯有親自操作，才能破除恐懼。</p>
+        
+        <!-- 修正：將 gap 從 24px 縮小為 16px -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- 修正：將 padding 從 20px 縮小為 16px -->
+            <div style="padding: 16px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; border-left: 6px solid #6366f1;">
+                <h3 style="font-size: 20px; margin-bottom: 8px;">錢包與資安</h3>
+                <p style="margin: 0; font-size: 18px;">安裝加密貨幣錢包，學會保管助記詞，理解資產自主權。</p>
+            </div>
+            <div style="padding: 16px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; border-left: 6px solid #f43f5e;">
+                <h3 style="font-size: 20px; margin-bottom: 8px;">鏈上交易</h3>
+                <p style="margin: 0; font-size: 18px;">實際發送與接收一筆加密貨幣，看懂鏈上數據瀏覽器 (Etherscan)。</p>
+            </div>
+            <div style="padding: 16px; background: white; border-radius: 12px; border: 1px solid #e2e8f0; border-left: 6px solid #14b8a6;">
+                <h3 style="font-size: 20px; margin-bottom: 8px;">DeFi & 穩定幣</h3>
+                <p style="margin: 0; font-size: 18px;">體驗美元穩定幣支付，操作去中心化金融協議。</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Methodology - Step 3 (循序漸進 - 應用) -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">第三步：帶回你的工作場景</h2>
+    <div class="content-area">
+        <div class="highlight-grid">
+            <div class="highlight-box">
+                <div class="icon" style="margin: 0 auto 20px; font-size: 40px; color: #6366f1;"><i class="fa-solid fa-bullhorn"></i></div>
+                <h3 style="margin-bottom: 10px;">行銷與社群</h3>
+                <p style="font-size: 16px; color: #64748b;">理解 Web3 行銷術語，不再被廠商話術呼嚨。</p>
+            </div>
+            <div class="highlight-box">
+                <div class="icon" style="margin: 0 auto 20px; font-size: 40px; color: #f43f5e;"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <h3 style="margin-bottom: 10px;">財務與支付</h3>
+                <p style="font-size: 16px; color: #64748b;">評估導入穩定幣支付的可行性，節省跨境匯款的手續費與時間。</p>
+            </div>
+            <div class="highlight-box">
+                <div class="icon" style="margin: 0 auto 20px; font-size: 40px; color: #14b8a6;"><i class="fa-solid fa-diagram-project"></i></div>
+                <h3 style="margin-bottom: 10px;">PM 與決策</h3>
+                <p style="font-size: 16px; color: #64748b;">判斷專案是否真的需要區塊鏈？如何避開常見的技術與合規地雷？</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 8: Agenda (時間軸) -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">課程藍圖</h2>
+    <div class="content-area">
+        <div class="timeline-layout">
+            <div class="timeline-item">
+                <div class="timeline-dot"><span>09:30</span></div>
+                <div class="timeline-card">
+                    <h3>收錢體驗</h3>
+                    <p>錢包安裝與資產初體驗</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"><span>11:00</span></div>
+                <div class="timeline-card">
+                    <h3>避雷指南</h3>
+                    <p>從歷史災難學會辨識風險</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"><span>13:30</span></div>
+                <div class="timeline-card">
+                    <h3>DeFi 金流</h3>
+                    <p>去中心化金融實作</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"><span>15:00</span></div>
+                <div class="timeline-card">
+                    <h3>私房工具</h3>
+                    <p>提升效率的商業應用</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 額外資訊 -->
+        <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-users" style="color: #6366f1;"></i>
+                <span style="font-weight: 600; color: #334155;">30 人小班制教學</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-gift" style="color: #f43f5e;"></i>
+                <span style="font-weight: 600; color: #334155;">包含區塊勢訂閱</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 9: Comparison (為什麼不一樣) -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">為什麼這堂課不一樣？</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">比較項目</th>
+                        <th style="width: 40%;">坊間投資課程</th>
+                        <th style="width: 40%; background-color: #e0e7ff; color: #4338ca;">本堂實戰課程</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>教學重點</td>
+                        <td>教你怎麼看線圖、開槓桿</td>
+                        <td style="background-color: #eef2ff; color: #3730a3; font-weight: 500;">教你理解技術、應用工具</td>
+                    </tr>
+                    <tr>
+                        <td>目標對象</td>
+                        <td>想賺快錢的散戶</td>
+                        <td style="background-color: #eef2ff; color: #3730a3; font-weight: 500;">企業、組織與專業工作者</td>
+                    </tr>
+                    <tr>
+                        <td>核心價值</td>
+                        <td>尋找下一個百倍幣</td>
+                        <td style="background-color: #eef2ff; color: #3730a3; font-weight: 500;">建立長期商業判斷力</td>
+                    </tr>
+                    <tr>
+                        <td>課後收穫</td>
+                        <td>焦慮的盯盤生活</td>
+                        <td style="background-color: #eef2ff; color: #3730a3; font-weight: 500;">幫你少走冤枉路，避開地雷</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 10: Quote (結語) -->
+<div class="slide-container quote-slide" id="slide10">
+    <div class="title-layout">
+        <div class="quote-text">
+            這堂課不教賺錢，<br>而是幫你建立賺錢的能力。
+        </div>
+        <p style="margin-top: 40px; font-size: 24px; color: #94a3b8;">— 許明恩</p>
+        <div style="margin-top: 20px; width: 100px; height: 4px; background: #6366f1; border-radius: 2px;"></div>
+    </div>
+</div>
+
+<!-- Slide 11: Q&A -->
+<div class="slide-container" id="slide11" style="background-color: #f8fafc;">
+    <div class="title-layout">
+        <div style="width: 120px; height: 120px; background: #e0e7ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 30px;">
+            <i class="fa-solid fa-comments" style="font-size: 60px; color: #6366f1;"></i>
+        </div>
+        <h1>Q & A</h1>
+        <p class="subtitle">歡迎提問，了解更多</p>
+        <p style="margin-top: 20px; color: #6366f1; font-weight: 700; font-size: 24px;">www.blocktrend.today</p>
+    </div>
+</div>
+
+</body>
+</html>
