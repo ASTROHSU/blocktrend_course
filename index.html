@@ -4,20 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>企業 Web3 實戰工作坊 - 區塊勢 Blocktrend</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.blocktrend.today/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.blocktrend.today/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.blocktrend.today/apple-touch-icon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { box-sizing: border-box; }
-        body {
+body {
             background-color: #334155;
             margin: 0;
             padding: 40px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 40px;
+  gap: 40px;
             font-family: 'Noto Sans TC', sans-serif;
         }
 
@@ -30,9 +36,9 @@
             background-color: #f8fafc;
             position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
             align-items: center;
             padding: 60px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
@@ -117,7 +123,7 @@
         .timeline-container {
             width: 100%;
             text-align: left;
-            position: relative;
+  position: relative;
             padding-left: 20px;
         }
         .timeline-item {
@@ -145,10 +151,10 @@
         
         /* 圓點 */
         .timeline-item::after {
-            content: '';
-            position: absolute;
+  content: '';
+  position: absolute;
             left: 2px;
-            top: 8px;
+  top: 8px;
             width: 28px;
             height: 28px;
             background: #6366f1;
@@ -167,7 +173,7 @@
             color: #e2e8f0;
             padding: 4px 12px;
             border-radius: 6px;
-            font-weight: 700;
+  font-weight: 700;
             font-size: 20px; /* 縮小字體 */
             display: inline-block;
             margin-bottom: 6px;
@@ -176,7 +182,7 @@
         
         /* 流程細節列表樣式 */
         .timeline-detail-list {
-            list-style: none;
+  list-style: none;
             padding: 0;
             margin: 0;
             color: #cbd5e1;
@@ -185,24 +191,24 @@
         }
         .timeline-detail-list li {
             margin-bottom: 4px;
-            position: relative;
+  position: relative;
             padding-left: 20px;
         }
         .timeline-detail-list li::before {
             content: '•';
-            position: absolute;
-            left: 0;
+  position: absolute;
+  left: 0;
             color: #818cf8;
             font-weight: bold;
         }
 
         /* 社會證明區塊樣式 - 2欄位版本 */
         .review-grid {
-            display: grid;
+  display: grid;
             grid-template-columns: 1fr 1fr; /* 2 欄位 */
             gap: 20px; /* 增加間距 */
-            width: 100%;
-        }
+  width: 100%;
+}
         .review-card {
             background: white;
             padding: 20px; /* 增加 Padding */
@@ -210,7 +216,7 @@
             text-align: left;
             position: relative;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 增加陰影 */
-            display: flex;
+  display: flex;
             align-items: center; /* 垂直置中 */
             gap: 15px;
         }
@@ -222,14 +228,14 @@
             border-radius: 50%;
             background: #f1f5f9;
             flex-shrink: 0;
-            overflow: hidden;
+  overflow: hidden;
             border: 3px solid #e0e7ff;
         }
         .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
         .review-content {
             flex: 1;
@@ -244,7 +250,7 @@
         }
         .review-author {
             font-size: 15px;
-            color: #64748b;
+  color: #64748b;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -269,16 +275,16 @@
         .notice-list li {
             margin-bottom: 25px;
             padding-left: 45px;
-            position: relative;
+  position: relative;
             font-size: 22px;
             color: #334155;
             line-height: 1.5;
-        }
+}
         .notice-list li i {
-            position: absolute;
+  position: absolute;
             left: 0;
             top: 5px;
-            color: #6366f1;
+  color: #6366f1;
             font-size: 24px;
         }
         .notice-title {
@@ -308,7 +314,7 @@
                 /* 手機上取消強制方形，改為隨內容長高 */
                 aspect-ratio: auto; 
                 height: auto;
-                padding: 40px 20px;
+  padding: 40px 20px;
                 border-radius: 16px;
             }
 
@@ -410,8 +416,8 @@
                 <li>看懂鏈上金流去向與背後邏輯</li>
                 <li>避免做錯需求、走錯方向</li>
             </ul>
-        </div>
     </div>
+</div>
 
     <!-- 圖卡 3 (原始版本) -->
     <div class="card">
@@ -435,7 +441,7 @@
                 </div>
                 <div class="feature-box">
                     <i class="fa-solid fa-chess" style="color: #14b8a6;"></i>
-                    <div>
+            <div>
                         <div class="feature-box-title">從趨勢到策略</div>
                         <div class="feature-box-desc">解析全球巨頭戰略，辨識真偽應用</div>
                     </div>
@@ -503,9 +509,9 @@
                         <div class="review-text">去中心化金融的實例分析很精彩！雖然是新手，但老師講解得很清楚，讓我看見具體商機。</div>
                         <div class="review-author">
                             <span class="review-tag">2025 年學員</span>
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </div>
+</div>
 
                 <!-- 評論 4 -->
                 <div class="review-card">
@@ -528,7 +534,7 @@
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
                     <i class="fa-solid fa-star"></i>
-                </div>
+            </div>
                 <p class="sub" style="font-size: 24px; margin: 0;">歷年近萬名學員滿意度平均 4.9 / 5.0</p>
             </div>
         </div>
@@ -542,7 +548,7 @@
             <div class="grid-2">
                 <div class="module-box">
                     <div class="module-icon">🛡️</div>
-                    <div>
+                <div>
                         <div class="module-title">資產安全實務</div>
                         <div class="module-desc">建立組織的數位防火牆</div>
                     </div>
@@ -552,11 +558,11 @@
                     <div>
                         <div class="module-title">透視加密金流</div>
                         <div class="module-desc">解構鏈上數據與判讀</div>
-                    </div>
                 </div>
+            </div>
                 <div class="module-box">
                     <div class="module-icon">⚖️</div>
-                    <div>
+                <div>
                         <div class="module-title">風險漏洞拆解</div>
                         <div class="module-desc">從重大血淚案例學風控</div>
                     </div>
@@ -566,7 +572,7 @@
                     <div>
                         <div class="module-title">企業情境診斷</div>
                         <div class="module-desc">針對您的需求實戰指導</div>
-                    </div>
+            </div>
                 </div>
             </div>
         </div>
@@ -590,15 +596,15 @@
                     <div>
                         <span class="target-title">監管與法遵人員</span>
                         <span class="target-text">理解鏈上金流，提升查核與制度設計能力</span>
-                    </div>
-                </div>
+    </div>
+</div>
                 <div class="target-item">
                     <span class="target-num" style="background: #14b8a6;">3</span>
                     <div>
                         <span class="target-title">財務與決策主管</span>
                         <span class="target-text">評估資產代幣化與新模式可行性</span>
                     </div>
-                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -613,22 +619,22 @@
                 <div style="font-size: 24px; color: #334155; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
                     <i class="fa-solid fa-location-dot" style="color: #6366f1; width: 30px; text-align: center;"></i>
                     <span>集思台大會議中心<br><span style="font-size: 18px; color: #64748b; font-weight: 500;">（捷運公館站2號出口）</span></span>
-                </div>
+            </div>
                 <div style="font-size: 24px; color: #334155; font-weight: 700; display: flex; align-items: center; gap: 15px;">
                     <i class="fa-solid fa-ticket" style="color: #f43f5e; width: 30px; text-align: center;"></i>
                     <span>課程費用：NT$ 15,800</span>
-                </div>
+            </div>
                 <div style="font-size: 18px; color: #64748b; font-weight: 500; margin-top: 15px; padding-top: 15px; border-top: 2px dashed #e2e8f0;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
                         <i class="fa-solid fa-users" style="color: #0d9488; width: 20px; text-align: center;"></i>
                         <span>限額 25 人</span>
-                    </div>
+            </div>
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <i class="fa-solid fa-file-invoice-dollar" style="color: #0d9488; width: 20px; text-align: center;"></i>
                         <span>提供收據，可供公司報帳</span>
-                    </div>
-                </div>
-            </div>
+        </div>
+    </div>
+</div>
 
             <a href="https://buy.stripe.com/3cIfZhexbb2fcpOe6o3ks04" target="_blank" class="cta-btn">
                 立即報名實戰工作坊 👇
@@ -645,13 +651,13 @@
             
             <div class="timeline-container">
                 <!-- 08:30 -->
-                <div class="timeline-item">
+            <div class="timeline-item">
                     <span class="time-badge">08:30 - 09:00</span>
                     <div class="timeline-title">報到與入場</div>
                 </div>
 
                 <!-- 09:00 -->
-                <div class="timeline-item">
+            <div class="timeline-item">
                     <span class="time-badge">09:00 - 10:30</span>
                     <div class="timeline-title">Web3 金流基礎建設</div>
                     <ul class="timeline-detail-list">
@@ -664,10 +670,10 @@
                 <div class="timeline-item break">
                     <span class="time-badge" style="background:#ffe4e6; color:#be123c;">10:30 - 10:40</span>
                     <div class="timeline-title">課間休息</div>
-                </div>
+            </div>
 
                 <!-- 10:40 -->
-                <div class="timeline-item">
+            <div class="timeline-item">
                     <span class="time-badge">10:40 - 12:10</span>
                     <div class="timeline-title">重大風險與資安拆解</div>
                     <ul class="timeline-detail-list">
@@ -707,7 +713,7 @@
                 <div class="timeline-item break">
                     <span class="time-badge" style="background:#ffe4e6; color:#be123c;">14:40 - 14:50</span>
                     <div class="timeline-title">課間休息</div>
-                </div>
+</div>
 
                 <!-- 14:50 -->
                 <div class="timeline-item">
@@ -717,7 +723,7 @@
                         <li>跨境支付與穩定幣結算 </li>
                         <li>支付卡與鏈上隱私工具</li>
                     </ul>
-                </div>
+        </div>
 
                 <!-- 16:20 -->
                 <div class="timeline-item">
@@ -726,8 +732,8 @@
                     <ul class="timeline-detail-list">
                         <li>實務問題解答</li>
                     </ul>
-                </div>
-            </div>
+    </div>
+</div>
         </div>
     </div>
 
@@ -759,8 +765,8 @@
                     如有任何疑問，歡迎來信：hi@blocktrend.today
                 </li>
             </ul>
-        </div>
     </div>
+</div>
 
 </body>
 </html>
