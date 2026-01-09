@@ -196,6 +196,67 @@
             font-weight: bold;
         }
 
+        /* 社會證明區塊樣式 */
+        .review-grid {
+            display: grid;
+            gap: 20px;
+            width: 100%;
+        }
+        .review-card {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        /* 虛擬頭像樣式 */
+        .avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #f1f5f9;
+            flex-shrink: 0;
+            overflow: hidden;
+            border: 3px solid #e0e7ff;
+        }
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-content {
+            flex: 1;
+        }
+        
+        .review-text {
+            font-size: 22px;
+            color: #334155;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .review-author {
+            font-size: 16px;
+            color: #64748b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .review-tag {
+            background: #f1f5f9;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #6366f1;
+        }
+
         /* 講師與對象列表 */
         .flex-wrap-center { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .pill-badge { background: rgba(255,255,255,0.1); padding: 15px 30px; border-radius: 12px; font-size: 22px; color: white; display: inline-block; }
@@ -242,7 +303,7 @@
             .info-row i { width: 30px; }
 
             /* Grid 轉單欄 */
-            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 15px; }
+            .grid-2, .grid-3, .review-grid { grid-template-columns: 1fr; gap: 15px; }
 
             /* 內容區塊調整 */
             .feature-box { padding: 20px; border-radius: 16px; }
@@ -254,6 +315,12 @@
             .module-icon { font-size: 30px; margin-bottom: 0; width: 40px; text-align: center; }
             .module-title { font-size: 20px; margin-bottom: 2px; }
             .module-desc { font-size: 16px; }
+
+            /* 評論區塊調整 */
+            .review-card { padding: 20px; }
+            .review-text { font-size: 18px; margin-bottom: 8px; }
+            .avatar { width: 50px; height: 50px; }
+            .review-author { font-size: 16px; flex-wrap: wrap; }
 
             /* 講師與對象 */
             .instructor-img { width: 140px; height: 140px; margin-bottom: 20px; }
@@ -340,7 +407,7 @@
         </div>
     </div>
 
-    <!-- 圖卡 4 (原始版本) -->
+    <!-- 圖卡 4 (講師介紹) -->
     <div class="card dark">
         <div class="content">
             <div class="tag red">您的企業決策智庫</div>
@@ -356,7 +423,59 @@
         </div>
     </div>
 
-    <!-- 圖卡 5 (原始版本) -->
+    <!-- 新增圖卡：社會證明 (Social Proof) -->
+    <div class="card">
+        <div class="shape square-bottom"></div>
+        <div class="content">
+            <div class="tag">從 2017 年開始的信任</div>
+            <h2 style="font-size: 44px; margin-bottom: 40px;">聽聽過往學員怎麼說</h2>
+            
+            <div class="review-grid">
+                <!-- 評論 1 -->
+                <div class="review-card">
+                    <div class="avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar">
+                    </div>
+                    <div class="review-content">
+                        <div class="review-text">不再只是抽象概念，點對點支付的優勢講得很具體，完全打破我對區塊鏈難懂的印象。</div>
+                        <div class="review-author">
+                            <span class="review-tag">2025 年學員</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 評論 2 -->
+                <div class="review-card">
+                    <div class="avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka" alt="Avatar">
+                    </div>
+                    <div class="review-content">
+                        <div class="review-text">實際操作錢包真的打破了我的恐懼，原來加密金流離我們這麼近，回去馬上就能應用。</div>
+                        <div class="review-author">
+                            <span class="review-tag">2024 年學員</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 評論 3 -->
+                <div class="review-card">
+                    <div class="avatar">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jack" alt="Avatar">
+                    </div>
+                    <div class="review-content">
+                        <div class="review-text">去中心化金融的實例分析很精彩！雖然是新手，但老師講解得很清楚，讓我看見具體商機。</div>
+                        <div class="review-author">
+                            <span class="review-tag">2025 年學員</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="sub" style="margin-top: 30px; font-size: 24px;">👍 歷年近萬名學員滿意度平均 4.9 / 5.0</p>
+        </div>
+    </div>
+
+    <!-- 圖卡 5 (核心模組) -->
     <div class="card">
         <div class="content">
             <h2>四大核心特訓模組</h2>
@@ -394,7 +513,7 @@
         </div>
     </div>
 
-    <!-- 圖卡 6 (原始版本) -->
+    <!-- 圖卡 6 (受眾) -->
     <div class="card dark">
         <div class="shape square-bottom" style="opacity: 0.2;"></div>
         <div class="content">
