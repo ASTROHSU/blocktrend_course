@@ -25,7 +25,7 @@
         .card {
             width: 100%;
             max-width: 800px;
-            /* 電腦版保持方形比例，方便截圖 */
+            /* 強制所有卡片保持方形比例 */
             aspect-ratio: 1 / 1; 
             background-color: #f8fafc;
             position: relative;
@@ -37,13 +37,6 @@
             padding: 60px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             border-radius: 4px;
-        }
-
-        /* 新增：自動高度樣式 (給流程表用) */
-        .card.auto-height {
-            aspect-ratio: auto;
-            min-height: 800px;
-            padding: 50px;
         }
 
         .card.dark { background-color: #0f172a; color: white; }
@@ -111,7 +104,7 @@
         .module-title { font-size: 26px; font-weight: 800; color: #1e293b; margin-bottom: 5px; }
         .module-desc { font-size: 20px; color: #64748b; }
 
-        /* 新增：時間軸樣式 (Agenda) */
+        /* 時間軸樣式 (Agenda) */
         .timeline-container {
             width: 100%;
             text-align: left;
@@ -120,8 +113,8 @@
         }
         .timeline-item {
             position: relative;
-            padding-left: 50px;
-            margin-bottom: 40px;
+            padding-left: 45px;
+            margin-bottom: 30px; /* 縮小間距以適應方形卡片 */
         }
         .timeline-item:last-child { margin-bottom: 0; }
         
@@ -131,52 +124,68 @@
             position: absolute;
             left: 14px;
             top: 15px;
-            bottom: -55px; /* 連接到下一個 */
+            bottom: -45px; /* 調整連接線長度 */
             width: 4px;
             background: #cbd5e1;
         }
         .timeline-item:last-child::before { display: none; }
         /* 暗色模式下的連接線 */
         .card.dark .timeline-item::before {
-            background: #475569;
+            background: #334155;
         }
         
         /* 圓點 */
         .timeline-item::after {
             content: '';
             position: absolute;
-            left: 0;
-            top: 10px;
-            width: 32px;
-            height: 32px;
+            left: 2px;
+            top: 8px;
+            width: 28px;
+            height: 28px;
             background: #6366f1;
-            border: 6px solid #e0e7ff;
+            border: 5px solid #e0e7ff;
             border-radius: 50%;
             z-index: 1;
         }
         .timeline-item.break::after { background: #f43f5e; border-color: #ffe4e6; }
         /* 暗色模式下的圓點邊框調整 */
         .card.dark .timeline-item::after {
-            border-color: #1e293b; /* 使用深色背景色作為邊框，製造鏤空感 */
+            border-color: #0f172a; 
         }
 
         .time-badge {
-            background: #e2e8f0;
-            color: #475569;
-            padding: 5px 15px;
-            border-radius: 8px;
+            background: #334155;
+            color: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 20px; /* 縮小字體 */
             display: inline-block;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
-        .timeline-title { font-size: 32px; font-weight: 900; color: #1e293b; margin-bottom: 5px; }
-        .timeline-desc { font-size: 24px; color: #64748b; line-height: 1.4; }
-
-        /* 暗色模式下的文字顏色適配 */
-        .card.dark .timeline-title { color: #f1f5f9; }
-        .card.dark .timeline-desc { color: #cbd5e1; }
-        .card.dark .time-badge { background: #334155; color: #e2e8f0; }
+        .timeline-title { font-size: 28px; font-weight: 800; color: #f1f5f9; margin-bottom: 6px; }
+        
+        /* 流程細節列表樣式 */
+        .timeline-detail-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: #cbd5e1;
+            font-size: 20px; /* 縮小字體 */
+            line-height: 1.4;
+        }
+        .timeline-detail-list li {
+            margin-bottom: 4px;
+            position: relative;
+            padding-left: 20px;
+        }
+        .timeline-detail-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #818cf8;
+            font-weight: bold;
+        }
 
         /* 講師與對象列表 */
         .flex-wrap-center { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -202,8 +211,6 @@
                 border-radius: 16px;
             }
 
-            .card.auto-height { padding: 40px 20px; }
-
             .shape { transform: scale(0.6); }
 
             h1, h1.title-small { font-size: 36px; margin-bottom: 15px; }
@@ -217,7 +224,7 @@
             .divider, .divider.blue { margin: 15px auto; height: 6px; }
 
             /* 列表調整 */
-            ul.big-list li { font-size: 20px; margin-bottom: 15px; padding-left: 30px; }
+            ul.big-list { font-size: 20px; margin-bottom: 15px; padding-left: 30px; }
             ul.big-list li::before { font-size: 18px; top: 5px; }
 
             /* 資訊框調整 */
@@ -255,7 +262,7 @@
             .timeline-item::after { width: 26px; height: 26px; border-width: 4px; left: 0; }
             .time-badge { font-size: 16px; }
             .timeline-title { font-size: 22px; }
-            .timeline-desc { font-size: 18px; }
+            .timeline-detail-list { font-size: 18px; }
         }
     </style>
 </head>
@@ -271,7 +278,7 @@
             <div class="divider"></div>
             <p class="sub">掌握產業核心邏輯<br>拿回決策主導權</p>
             <div class="info-box">
-                <div class="info-row"><i class="fa-solid fa-calendar-days"></i><span>2026 / 03 / 06 (五)  9:00 - 16:30</span></div>
+                <div class="info-row"><i class="fa-solid fa-calendar-days"></i><span>2026 / 03 / 06 (五)  9:00 - 17:00</span></div>
                 <div class="info-row"><i class="fa-solid fa-user-tie"></i><span>講師｜許明恩 (包含一對一需求診斷)</span></div>
             </div>
         </div>
@@ -419,42 +426,96 @@
         </div>
     </div>
 
-    <!-- 新增圖卡：當日流程 (移至最後 & 改為暗色系) -->
-    <div class="card auto-height dark">
+    <!-- 新增圖卡：當日流程 (上午場) -->
+    <div class="card dark">
         <div class="shape circle-top"></div>
         <div class="content">
-            <div class="tag teal">當日實戰流程</div>
-            <h2 style="margin-bottom: 50px;">從 0 到 1 的<br>完整實作演練</h2>
+            <div class="tag teal">議程與大綱</div>
+            <h2 style="margin-bottom: 40px;">上午場：觀念與風控</h2>
             
             <div class="timeline-container">
-                <!-- 上午場 -->
+                <!-- 08:30 -->
                 <div class="timeline-item">
-                    <span class="time-badge">09:00 - 10:30</span>
-                    <div class="timeline-title">基礎建設與錢包資安</div>
-                    <div class="timeline-desc">建立正確的帳號觀念，辨識助記詞、私鑰與授權風險。</div>
-                </div>
-                <div class="timeline-item">
-                    <span class="time-badge">10:40 - 12:10</span>
-                    <div class="timeline-title">穩定幣與全球支付</div>
-                    <div class="timeline-desc">體驗無國界轉帳，解析 USDC/USDT 運作機制與企業應用場景。</div>
-                </div>
-                
-                <!-- 中場休息 -->
-                <div class="timeline-item break">
-                    <span class="time-badge" style="background:#ffe4e6; color:#be123c;">12:00 - 13:00</span>
-                    <div class="timeline-title">午餐與交流時間</div>
+                    <span class="time-badge">08:30 - 09:00</span>
+                    <div class="timeline-title">報到與入場</div>
                 </div>
 
-                <!-- 下午場 -->
+                <!-- 09:00 -->
                 <div class="timeline-item">
-                    <span class="time-badge">13:00 - 14:30</span>
-                    <div class="timeline-title">DeFi 運作與投資邏輯</div>
-                    <div class="timeline-desc">拆解去中心化交易所與借貸協議，看懂收益來源與風險。</div>
+                    <span class="time-badge">09:00 - 10:30</span>
+                    <div class="timeline-title">Web3 金流基礎建設</div>
+                    <ul class="timeline-detail-list">
+                        <li>錢包實戰與私鑰管理</li>
+                        <li>加密貨幣收發體驗（理解責任分界）</li>
+                    </ul>
                 </div>
+                
+                <!-- 休息 -->
+                <div class="timeline-item break">
+                    <span class="time-badge" style="background:#ffe4e6; color:#be123c;">10:30 - 10:40</span>
+                    <div class="timeline-title">課間休息</div>
+                </div>
+
+                <!-- 10:40 -->
                 <div class="timeline-item">
-                    <span class="time-badge">14:40 - 16:30</span>
-                    <div class="timeline-title">鏈上偵探與風險實戰</div>
-                    <div class="timeline-desc">使用 Etherscan 追蹤資金流向，分析詐騙案例與防範策略。</div>
+                    <span class="time-badge">10:40 - 12:10</span>
+                    <div class="timeline-title">重大風險與資安拆解</div>
+                    <ul class="timeline-detail-list">
+                        <li>交易簽署與授權陷阱分析</li>
+                        <li>交易所倒閉與駭客攻擊案例</li>
+                    </ul>
+                </div>
+
+                <!-- 午餐 -->
+                <div class="timeline-item break">
+                    <span class="time-badge" style="background:#ffe4e6; color:#be123c;">12:10 - 13:10</span>
+                    <div class="timeline-title">午餐休息</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增圖卡：當日流程 (下午場) -->
+    <div class="card dark">
+        <div class="shape square-bottom"></div>
+        <div class="content">
+            <div class="tag teal">議程與大綱</div>
+            <h2 style="margin-bottom: 40px;">下午場：金流與應用</h2>
+            
+            <div class="timeline-container">
+                <!-- 13:10 -->
+                <div class="timeline-item">
+                    <span class="time-badge">13:10 - 14:40</span>
+                    <div class="timeline-title">鏈上金流透視與獲利邏輯</div>
+                    <ul class="timeline-detail-list">
+                        <li>DeFi 借貸與穩定幣套利實作</li>
+                        <li>資金流向追蹤與數據判讀</li>
+                    </ul>
+                </div>
+
+                <!-- 休息 -->
+                <div class="timeline-item break">
+                    <span class="time-badge" style="background:#ffe4e6; color:#be123c;">14:40 - 14:50</span>
+                    <div class="timeline-title">課間休息</div>
+                </div>
+
+                <!-- 14:50 -->
+                <div class="timeline-item">
+                    <span class="time-badge">14:50 - 16:20</span>
+                    <div class="timeline-title">Web3 商業應用</div>
+                    <ul class="timeline-detail-list">
+                        <li>跨境支付與穩定幣結算 </li>
+                        <li>支付卡與鏈上隱私工具</li>
+                    </ul>
+                </div>
+
+                <!-- 16:20 -->
+                <div class="timeline-item">
+                    <span class="time-badge">16:20 - 17:00</span>
+                    <div class="timeline-title">課程收斂與Q&A</div>
+                    <ul class="timeline-detail-list">
+                        <li>實務問題解答</li>
+                    </ul>
                 </div>
             </div>
         </div>
