@@ -146,9 +146,10 @@
             top: 15px;
             bottom: -50px;
             width: 2px;
-            background: #475569;
+            background: #cbd5e1;
         }
         .timeline-item:last-child::before { display: none; }
+        section.dark .timeline-item::before { background: #475569; }
         
         /* 圓點 */
         .timeline-item::after {
@@ -159,10 +160,11 @@
             width: 22px;
             height: 22px;
             background: #6366f1;
-            border: 4px solid #0f172a; /* Dark background color */
+            border: 4px solid #fff; 
             border-radius: 50%;
             z-index: 1;
         }
+        section.dark .timeline-item::after { border-color: #0f172a; }
         .timeline-item.break::after { background: #f43f5e; }
 
         .time-badge {
@@ -175,17 +177,20 @@
             display: inline-block;
             margin-bottom: 8px;
         }
-        .timeline-title { font-size: 24px; font-weight: 800; color: #f1f5f9; margin-bottom: 10px; line-height: 1.3; }
+        .timeline-title { font-size: 24px; font-weight: 800; color: #1e293b; margin-bottom: 10px; line-height: 1.3; }
+        section.dark .timeline-title { color: #f1f5f9; }
         
         /* 流程細節列表樣式 */
         .timeline-detail-list {
             list-style: none;
             padding: 0;
             margin: 0;
-            color: #cbd5e1;
+            color: #475569;
             font-size: 18px;
             line-height: 1.5;
         }
+        section.dark .timeline-detail-list { color: #cbd5e1; }
+        
         .timeline-detail-list li {
             margin-bottom: 5px;
             position: relative;
@@ -260,31 +265,32 @@
         .target-text { font-size: 20px; color: #94a3b8; display: block; margin-top: 5px; }
         .target-title { font-weight: bold; font-size: 24px; color: white; display: block; }
 
-        /* CTA 按鈕 */
+        /* CTA 按鈕 (增強版) */
         .cta-btn { 
-            background: #0f172a; 
+            background: #6366f1; /* 亮眼藍紫色 */
             color: white; 
-            padding: 25px 60px; 
-            border-radius: 12px; 
-            font-size: 28px; 
+            padding: 25px 80px; 
+            border-radius: 50px; /* 改為圓角膠囊型，更現代 */
+            font-size: 32px; 
             display: inline-block; 
             cursor: pointer; 
             text-decoration: none; 
-            font-weight: bold; 
+            font-weight: 900; 
             transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4); /* 增加發光陰影 */
+            border: 2px solid rgba(255,255,255,0.1);
         }
         .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.3);
-            background: #1e293b;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.5);
+            background: #4f46e5;
         }
-
-        /* 須知列表 */
-        .notice-list { list-style: none; padding: 0; text-align: left; margin-top: 20px; width: 100%; max-width: 700px; margin: 20px auto 0; }
-        .notice-list li { margin-bottom: 25px; padding-left: 40px; position: relative; font-size: 20px; color: #334155; line-height: 1.6; }
-        .notice-list li i { position: absolute; left: 0; top: 5px; color: #6366f1; font-size: 22px; }
-        .notice-title { font-weight: 800; color: #1e293b; display: block; margin-bottom: 5px; }
+        
+        /* 須知列表 (改回深色字，因背景變亮) */
+        .notice-list { list-style: none; padding: 0; text-align: left; margin-top: 20px; width: 100%; max-width: 800px; margin: 0 auto; }
+        .notice-list li { margin-bottom: 25px; padding-left: 45px; position: relative; font-size: 20px; color: #475569; line-height: 1.6; }
+        .notice-list li i { position: absolute; left: 0; top: 3px; color: #6366f1; font-size: 24px; }
+        .notice-title { font-weight: 800; color: #1e293b; display: block; margin-bottom: 5px; font-size: 22px; }
 
         /* --- RWD 手機版調整 --- */
         @media (max-width: 820px) {
@@ -309,17 +315,20 @@
             .review-card { flex-direction: column; align-items: flex-start; }
             .review-author { margin-top: 10px; }
             
-            .cta-btn { width: 100%; padding: 20px; font-size: 22px; text-align: center; }
+            .cta-btn { width: 100%; padding: 20px; font-size: 24px; text-align: center; }
             
             .info-box { width: 100%; }
             .info-row { font-size: 18px; }
+            
+            .notice-list li { font-size: 18px; padding-left: 35px; }
+            .notice-list li i { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- 1. 封面區 -->
+        <!-- 1. 封面區 (亮) -->
         <section>
             <div class="shape circle-top"></div>
             <div class="content">
@@ -335,7 +344,7 @@
             </div>
         </section>
 
-        <!-- 2. 痛點 -->
+        <!-- 2. 痛點 (暗) -->
         <section class="dark">
             <div class="content">
                 <h2 class="subtitle-gray">為什麼你需要這堂課？</h2>
@@ -349,7 +358,7 @@
             </div>
         </section>
 
-        <!-- 3. 效益 (Feature) -->
+        <!-- 3. 效益 (亮) -->
         <section>
             <div class="shape square-bottom cyan"></div>
             <div class="content">
@@ -380,7 +389,7 @@
             </div>
         </section>
 
-        <!-- 4. 講師介紹 -->
+        <!-- 4. 講師介紹 (暗) -->
         <section class="dark">
             <div class="content">
                 <div class="tag red">您的企業決策智庫</div>
@@ -396,7 +405,7 @@
             </div>
         </section>
 
-        <!-- 5. 社會證明 -->
+        <!-- 5. 社會證明 (亮) -->
         <section>
             <div class="content">
                 <div class="tag">從 2017 年開始的信任</div>
@@ -439,11 +448,10 @@
                     </div>
                     <p class="sub" style="font-size: 22px;">歷年近萬名學員滿意度平均 4.9 / 5.0</p>
                 </div>
-                <p class="sub" style="margin-top: 10px; font-size: 18px; opacity: 0.8;">🏢 指定講師：各大企業、學校、政府機關</p>
             </div>
         </section>
 
-        <!-- 6. 核心模組 -->
+        <!-- 6. 核心模組 (亮) -->
         <section>
             <div class="content">
                 <h2>四大核心特訓模組</h2>
@@ -473,7 +481,7 @@
             </div>
         </section>
 
-        <!-- 7. 課程受眾 -->
+        <!-- 7. 課程受眾 (暗) -->
         <section class="dark">
             <div class="content">
                 <h2>誰適合報名工作坊？</h2>
@@ -503,8 +511,8 @@
             </div>
         </section>
 
-        <!-- 8. 當日流程 (整合長條) -->
-        <section class="dark" style="background: #1e293b;">
+        <!-- 8. 當日流程 (亮) -->
+        <section>
             <div class="content">
                 <div class="tag teal">議程與大綱</div>
                 <h2 style="margin-bottom: 20px;">當日實戰流程</h2>
@@ -583,13 +591,13 @@
             </div>
         </section>
 
-        <!-- 9. CTA 與報名須知 -->
-        <section>
+        <!-- 9. CTA 報名區 (暗) -->
+        <section class="dark">
             <div class="content">
                 <h1 class="title-small" style="margin-bottom: 20px;">不只是聽懂</h1>
                 <p class="cta-sub" style="margin-bottom: 40px;">而是帶走坐上談判桌的<br>Web3 決策能力</p>
                 
-                <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 40px; text-align: left; display: inline-block;">
+                <div style="background: #fff; padding: 30px; border-radius: 16px; border: 1px solid #e2e8f0; margin-bottom: 40px; text-align: left; display: inline-block; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
                     <div style="font-size: 22px; color: #334155; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
                         <i class="fa-solid fa-location-dot" style="color: #6366f1; width: 30px; text-align: center;"></i>
                         <span>集思台大會議中心<br><span style="font-size: 16px; color: #64748b; font-weight: 500;">（捷運公館站2號出口）</span></span>
@@ -601,7 +609,7 @@
                     <div style="font-size: 16px; color: #64748b; font-weight: 500; margin-top: 15px; padding-top: 15px; border-top: 2px dashed #e2e8f0;">
                         <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
                             <i class="fa-solid fa-users" style="color: #0d9488; width: 20px; text-align: center;"></i>
-                            <span>限額 25 人，確保實作與討論品質</span>
+                            <span>限額 25 人，確保品質</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <i class="fa-solid fa-file-invoice-dollar" style="color: #0d9488; width: 20px; text-align: center;"></i>
@@ -613,7 +621,15 @@
                 <a href="https://buy.stripe.com/3cIfZhexbb2fcpOe6o3ks04" target="_blank" class="cta-btn">
                     立即報名實戰工作坊 👇
                 </a>
+            </div>
+        </section>
 
+        <!-- 10. 報名須知 (亮) -->
+        <section style="background-color: #f8fafc;">
+            <div class="content">
+                <h2 style="font-size: 36px; margin-bottom: 30px; color: #334155;">報名須知與注意事項</h2>
+                <div class="divider blue" style="margin-top: 0;"></div>
+                
                 <ul class="notice-list">
                     <li>
                         <i class="fa-solid fa-file-invoice-dollar"></i>
