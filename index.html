@@ -259,6 +259,35 @@
             font-weight: bold;
         }
 
+        /* 須知卡樣式 */
+        .notice-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .notice-list li {
+            margin-bottom: 25px;
+            padding-left: 45px;
+            position: relative;
+            font-size: 22px;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .notice-list li i {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #6366f1;
+            font-size: 24px;
+        }
+        .notice-title {
+            font-weight: 900;
+            color: #1e293b;
+            display: block;
+            margin-bottom: 5px;
+        }
+
         /* 講師與對象列表 */
         .flex-wrap-center { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
         .pill-badge { background: rgba(255,255,255,0.1); padding: 15px 30px; border-radius: 12px; font-size: 22px; color: white; display: inline-block; }
@@ -344,6 +373,10 @@
             .time-badge { font-size: 16px; }
             .timeline-title { font-size: 20px; }
             .timeline-detail-list { font-size: 16px; }
+
+            /* 須知列表手機版 */
+            .notice-list li { font-size: 18px; padding-left: 35px; }
+            .notice-list li i { font-size: 20px; }
         }
     </style>
 </head>
@@ -480,9 +513,9 @@
                         <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Robert" alt="Avatar">
                     </div>
                     <div class="review-content">
-                        <div class="review-text">內容含金量非常高，不只學到操作，更聽懂了背後的商業邏輯。</div>
+                        <div class="review-text">從支付到穩定幣結算，內容含金量非常高，聽完更懂背後的商業邏輯與成本優勢。</div>
                         <div class="review-author">
-                            <span class="review-tag">2024 學員</span>
+                            <span class="review-tag">2024 年學員</span>
                         </div>
                     </div>
                 </div>
@@ -695,6 +728,37 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 新增圖卡：報名須知 (Notice) -->
+    <div class="card">
+        <div class="content">
+            <h2 style="font-size: 48px; margin-bottom: 30px;">報名須知與注意事項</h2>
+            <div class="divider blue"></div>
+            
+            <ul class="notice-list">
+                <li>
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                    <span class="notice-title">關於發票與報帳</span>
+                    本課程提供正式收據，可供企業報帳。<br>請於付款頁面勾選「我正在以公司名義購買」即可填入統編。
+                </li>
+                <li>
+                    <i class="fa-solid fa-rotate-left"></i>
+                    <span class="notice-title">退費與轉讓機制</span>
+                    為確保課程品質與備課成本，開課前 8 天可申請退費（扣除 10% 手續費）；開課前 7 天內不予退費，但可轉讓名額給他人。
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <span class="notice-title">行前通知</span>
+                    詳細報到資訊與行前準備事項，將於開課前 3 天寄發至您的 Email 信箱，請務必留意。
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span class="notice-title">聯絡主辦單位</span>
+                    如有任何疑問，歡迎來信：hi@blocktrend.today
+                </li>
+            </ul>
         </div>
     </div>
 
